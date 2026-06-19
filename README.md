@@ -1,6 +1,6 @@
 # RR_layer
 
-`RR_layer` is a JAX / Equinox library implementing a **Rank-Reduction (RR) layer**: a layer that compresses its input by projecting onto a low-rank SVD basis.
+`RR_layer` is a PyTroch library implementing a **Rank-Reduction (RR) layer**: a layer that compresses its input by projecting onto a low-rank SVD basis.
 
 The mechanics are different between training and evaluation:
 
@@ -65,7 +65,7 @@ pip install RR_layer
 ## Quick start
 
 ```python
-import jax
+import torch
 from RR_layer import RRLayer  # replace with actual export
 
 inp = torch.randn(32, 768)
