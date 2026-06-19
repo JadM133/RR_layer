@@ -17,10 +17,10 @@ RR_layer/
 │   └── rr_layer.py        # the layer implementation(s)
 ├── examples/
 |   ├──── autoencoder
-│   |    ├── generate_data.ipynb
-│   |    ├── train_baseline.ipynb
-│   |    ├── train_RRAE.ipynb
-│   |    └── compare.ipynb
+│   |     ├── generate_data.ipynb
+│   |     ├── train_baseline.ipynb
+│   |     ├── train_RRAE.ipynb
+│   |     └── compare.ipynb
 └── tests/
     └── tests.py
 ```
