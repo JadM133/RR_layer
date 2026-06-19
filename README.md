@@ -66,7 +66,7 @@ pip install RR_layer
 
 ```python
 import torch
-from RR_layer import RRLayer  # replace with actual export
+from RR_layer import RRLayer
 
 inp = torch.randn(32, 768)
 rr = RRLayer(rank=8)
