@@ -2,7 +2,7 @@ import warnings
 import torch
 import torch.nn as nn
 from collections import deque
-
+# NOTE: Stable_svd is not used yet since there is a bug in the implementation of the gradient
 def stable_SVD(A):
     """ Computes a numerically stable SVD.
     
@@ -326,7 +326,7 @@ class RRLayer(nn.Module):
 
         elif self.training:
 
-            U, S, Vh = stable_SVD(X)
+            U, S, Vh = torch.linalg.svd(X, full_matrices=False)
 
             r = min(self.rank, S.shape[0])
 
