@@ -301,7 +301,7 @@ class RRLayer(nn.Module):
             dim=1,
         )
 
-        U, _, _ = stable_SVD(W)
+        U, _, _ = stable_svd(W)
 
         r = min(self.rank, U.shape[1])
 
