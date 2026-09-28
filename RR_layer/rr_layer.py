@@ -305,7 +305,7 @@ class RRLayer(nn.Module):
 
         r = min(self.rank, U.shape[1])
 
-        self.inference_basis = U[:, :r]
+        self.inference_basis = U[:, :r].detach().clone()
 
     def _validate_inputs(
         self,
@@ -462,3 +462,35 @@ class RRLayer(nn.Module):
             return output, basis_used, coeffs
 
         return output
+        
+    def _load_from_state_dict(
+        self,
+        state_dict,
+        prefix,
+        local_metadata,
+        strict,
+        missing_keys,
+        unexpected_keys,
+        error_msgs,
+    ):
+        key = prefix + "inference_basis"
+    
+        if key in state_dict:
+            saved_basis = state_dict[key]
+    
+            if (
+                self.inference_basis is None
+                or self.inference_basis.shape != saved_basis.shape
+            ):
+                self.inference_basis = torch.empty_like(saved_basis)
+    
+        super()._load_from_state_dict(
+            state_dict,
+            prefix,
+            local_metadata,
+            strict,
+            missing_keys,
+            unexpected_keys,
+            error_msgs,
+        )
+    
