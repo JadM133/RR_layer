@@ -415,7 +415,7 @@ class RRLayer(nn.Module):
 
         elif self.training:
 
-            U, S, Vh = torch.linalg.svd(X, full_matrices=False)
+            U, S, Vh = stable_svd(X)
 
             r = min(self.rank, S.shape[0])
 
